@@ -10,6 +10,7 @@ janela.grid_columnconfigure(0, weight=1)
 janela.geometry("910x700")
 janela.title("")
 janela.iconbitmap("syngular.ico")
+janela.resizable(False,False)
 
 fonte_negrito = customtkinter.CTkFont(family="Arial", size=14, weight="bold")
 
@@ -25,15 +26,14 @@ def clique():
 def combobox_callback(choice):
     print("Senha Administrador:", choice)
 
-imagem_pill1 = Image.open("syngular.png")
+
 imagem_pill2 = Image.open("Syng.png")
 
 
-imagem1 = customtkinter.CTkImage(light_image=imagem_pill1,size=(150, 150))
+
 imagem2 = customtkinter.CTkImage(light_image=imagem_pill2,size=(490, 490))
 
-Label_imagem1 = customtkinter.CTkLabel(janela , image=imagem1, text="")
-Label_imagem1.pack(expand=True, fill="both")
+
 
 Label_imagem2 = customtkinter.CTkLabel(janela, image=imagem2, text="")
 Label_imagem2.pack(side="left", expand=True, fill="both")
@@ -89,6 +89,6 @@ for i, (texto, var) in enumerate(switches):
 # Botão
 botao = customtkinter.CTkButton(janela, text="INICIAR", fg_color="#6800ff",
                                 hover_color="#808080", font=fonte_negrito, command=clique)
-botao.pack(side="bottom", padx=10, pady=10)
+botao.pack(padx=10, pady=10)
 
 janela.mainloop()
