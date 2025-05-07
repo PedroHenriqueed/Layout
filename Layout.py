@@ -29,16 +29,10 @@ def combobox_callback(choice):
 
 imagem_pill2 = Image.open("Syng.png")
 
-
-
 imagem2 = customtkinter.CTkImage(light_image=imagem_pill2,size=(490, 490))
-
-
 
 Label_imagem2 = customtkinter.CTkLabel(janela, image=imagem2, text="")
 Label_imagem2.pack(side="left", expand=True, fill="both")
-
-
 
 texto = customtkinter.CTkLabel(janela, text="Configuração das Estações de Trabalho", font=fonte_negrito)
 texto.pack(padx=10, pady=10)
