@@ -1,5 +1,6 @@
 import customtkinter
 from tkinter import font
+from tkinter import *
 from PIL import Image
 
 customtkinter.set_appearance_mode("light")
@@ -7,7 +8,7 @@ customtkinter.set_appearance_mode("light")
 janela = customtkinter.CTk()
 janela.grid_rowconfigure(0, weight=1)
 janela.grid_columnconfigure(0, weight=1)
-janela.geometry("910x700")
+janela.geometry("900x700")
 janela.title("")
 janela.iconbitmap("syngular.ico")
 janela.resizable(False,False)
@@ -26,34 +27,46 @@ def clique():
 def combobox_callback(choice):
     print("Senha Administrador:", choice)
 
-
+#IMAGEM
 imagem_pill2 = Image.open("Syng.png")
+img  = Image.open("Syngular.png")
 
-imagem2 = customtkinter.CTkImage(light_image=imagem_pill2,size=(490, 490))
+imagem2 = customtkinter.CTkImage(light_image=imagem_pill2,size=(550, 500))
 
 Label_imagem2 = customtkinter.CTkLabel(janela, image=imagem2, text="")
-Label_imagem2.pack(side="left", expand=True, fill="both")
+Label_imagem2.place(x=0,y=50)
 
-texto = customtkinter.CTkLabel(janela, text="Configuração das Estações de Trabalho", font=fonte_negrito)
-texto.pack(padx=10, pady=10)
+#FRAME
+frame = customtkinter.CTkFrame(master=janela, width=420, height=900)
+frame.pack(side=RIGHT)
 
-AGR = customtkinter.CTkEntry(janela, placeholder_text="Nome do AGR: ")
-AGR.pack(padx=10, pady=10)
+#FRAME IMAGEM
+img = customtkinter.CTkImage(light_image=img,size=(150, 150))
 
-AR = customtkinter.CTkEntry(janela, placeholder_text="Nome da AR: ")
-AR.pack(padx=10, pady=10)
+Label_img = customtkinter.CTkLabel(master=frame,image=img, text="")
+Label_img.place(x=140,y=0)
 
-texto_combo = customtkinter.CTkLabel(janela, text="Senha Administradora", font=fonte_negrito)
-texto_combo.pack(padx=2, pady=2)
+#FRAME WIDGETS
+texto = customtkinter.CTkLabel(master=frame, text="Configuração das Estações de Trabalho", font=fonte_negrito, width=300)
+texto.place(x=50, y=10)
 
-combobox = customtkinter.CTkComboBox(janela, values=["ARs Próprias", "Outras ARs"],
-                                     command=combobox_callback, button_color="#6800ff")
+AGR = customtkinter.CTkEntry(master=frame, placeholder_text="Nome do AGR: ")
+AGR.place(x=118, y=60)
+
+AR = customtkinter.CTkEntry(master=frame, placeholder_text="Nome da AR: ")
+AR.place(x=118, y=120)
+
+texto_combo = customtkinter.CTkLabel(master=frame, text="Senha Administradora", font=fonte_negrito)
+texto_combo.place(x=110, y=160)
+
+combobox = customtkinter.CTkComboBox(master=frame, values=["ARs Próprias", "Outras ARs"],
+ command=combobox_callback, button_color="#6800ff")
 combobox.set("ARs Próprias")
-combobox.pack(pady=3)
+combobox.place(x=118,y=190)
 
 # Frame para switches
-frame_switches = customtkinter.CTkFrame(janela, fg_color="transparent")
-frame_switches.pack(pady=20)
+frame_switches = customtkinter.CTkFrame(master=frame, fg_color="transparent")
+frame_switches.place(x=0,y=250)
 
 # Variáveis de estado
 var_bitlocker = customtkinter.StringVar(value="off")
@@ -81,8 +94,8 @@ for i, (texto, var) in enumerate(switches):
     s.grid(row=i // 2, column=i % 2, padx=20, pady=10, sticky="w")
 
 # Botão
-botao = customtkinter.CTkButton(janela, text="INICIAR", fg_color="#6800ff",
+botao = customtkinter.CTkButton(master=frame, text="INICIAR", fg_color="#6800ff",
                                 hover_color="#808080", font=fonte_negrito, command=clique)
-botao.pack(padx=10, pady=10)
+botao.place(x=118, y=420)
 
 janela.mainloop()
