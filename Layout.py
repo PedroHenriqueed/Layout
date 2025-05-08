@@ -50,16 +50,16 @@ Label_img.place(x=130,y=0)
 texto = customtkinter.CTkLabel(master=frame, text="Configuração da Estação de Trabalho", font=fonte_negrito, width=300)
 texto.place(x=60, y=100)
 
-AGR = customtkinter.CTkEntry(master=frame, placeholder_text="Nome do AGR: ")
+AGR = customtkinter.CTkEntry(master=frame, placeholder_text="Nome do AGR ", justify="center")
 AGR.place(x=128, y=150)
 
-AR = customtkinter.CTkEntry(master=frame, placeholder_text="Nome da AR: ")
+AR = customtkinter.CTkEntry(master=frame, placeholder_text="Nome da AR ",justify="center")
 AR.place(x=128, y=190)
 
 texto_combo = customtkinter.CTkLabel(master=frame, text="Senha Administradora", font=fonte_negrito)
 texto_combo.place(x=120, y=225)
 
-combobox = customtkinter.CTkComboBox(master=frame, values=["ARs Próprias", "Outras ARs"],
+combobox = customtkinter.CTkComboBox(master=frame,justify="center", values=["ARs Próprias", "Outras ARs"],
  command=combobox_callback, button_color="#6800ff")
 combobox.set("ARs Próprias")
 combobox.place(x=128,y=255)
